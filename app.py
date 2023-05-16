@@ -13,10 +13,10 @@ def main():
     newmodel = joblib.load('regression_test.pkl')
     newmodel
 
-    x1 = st.slider('Inserisci crim', 0., 1000., 3.)
-    x2 = st.slider('Inserisci zn', 0., 1000., 10.)
-    x3 = st.slider('Inserisci indus', 0., 1000., 15.)
-    x4 = st.slider('Inserisci chas', 0., 1000., 0.)
+    x1 = st.slider('Inserisci crim', 0., 100., 3.)
+    x2 = st.slider('Inserisci zn', 0., 100., 10.)
+    x3 = st.slider('Inserisci indus', 0., 100., 15.)
+    x4 = st.slider('Inserisci chas', 0., 100., 0.)
     x5 = st.slider('Inserisci nox', 0., 100., 1.)
     x6 = st.slider('Inserisci rm', 0., 100., 5.)
     x7 = st.slider('Inserisci age', 0., 100., 50.)
@@ -27,16 +27,18 @@ def main():
     x12 = st.slider('Inserisci b', 0., 1000., 525.)
     x13 = st.slider('Inserisci lsta', 0., 100., 25.)
 
-    st.header(newmodel.predict([[x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13]]))
+    st.header('Il prezzo predetto è:')
+    st.subheader(newmodel.predict([[x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13]]))
 
 
 
     uploaded_file = st.file_uploader("Choose a file",type={"csv"})
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
+        st.header('**Dataframe iniziale**')
         st.dataframe(df)
 
-        X = df.iloc[:,-1]
+        X = df
         st.write(X)
 
         st.header('**Predizioni**')

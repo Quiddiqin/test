@@ -1,6 +1,8 @@
 streamlit
 pandas
 numpy
+matplotlib
 matplotlib.pyplot
 seaborn
 warnings
+joblib
